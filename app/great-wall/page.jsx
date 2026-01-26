@@ -3,6 +3,7 @@
 
 import React from 'react';
 import styles from './page.module.css';
+import Navbar from '../nav/Navbar';
 
 const timeline = [
   { year: "7th Century BCE", event: "Rival feudal states build the first disconnected walls of rammed earth to defend against one another." },
@@ -16,6 +17,7 @@ const timeline = [
 export default function GreatWall() {
   return (
     <div className={styles.container}>
+      <Navbar />
       {/* Hero Section */}
       <section className={styles.hero}>
         <div className={styles.heroOverlay} />

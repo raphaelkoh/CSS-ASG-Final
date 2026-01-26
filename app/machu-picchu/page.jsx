@@ -3,6 +3,7 @@
 
 import React, { useState } from 'react';
 import styles from './page.module.css';
+import Navbar from '../nav/Navbar';
 
 const landmarks = [
   {
@@ -62,6 +63,7 @@ export default function MachuPicchu() {
 
   return (
     <div className={styles.container}>
+      <Navbar />
       {/* Hero Section */}
       <section className={styles.hero}>
         <div className={styles.heroOverlay} />
