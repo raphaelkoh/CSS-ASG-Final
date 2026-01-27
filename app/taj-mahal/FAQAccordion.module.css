@@ -1,0 +1,42 @@
+.accordionSection {
+  padding: 40px 20px;
+  background: #333; /* Dark background */
+  color: white; /* White text */
+  text-align: center;
+}
+
+.accordionTitle {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.accordionContainer {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.accordionItem {
+  margin-bottom: 10px;
+  border: 1px solid #444; /* Darker border */
+  border-radius: 8px;
+  overflow: hidden;
+  transition: background 0.3s ease;
+}
+
+.accordionHeader {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  background: #555; /* Darker header background */
+}
+
+.accordionBody {
+  padding: 10px;
+  background: #666; /* Slightly lighter background for body */
+}
+
+.icon {
+  font-size: 20px;
+  color: white; /* White icon color */
+}
