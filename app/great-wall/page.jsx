@@ -70,6 +70,7 @@ export default function GreatWall() {
           </div>
         </div>
       </section>
+      
     </div>
   );
 }

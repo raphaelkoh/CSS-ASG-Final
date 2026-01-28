@@ -64,7 +64,7 @@
 /* ============ STATS SECTION ============ */
 .statsSection {
   padding: 50px 0; /* keep some top/bottom spacing */
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #d65418 0%, #f51111 100%);
   color: white;
   text-align: center;
 }
@@ -158,7 +158,7 @@
   top: 0;
   bottom: 0;
   width: 3px;
-  background: linear-gradient(to bottom, transparent, #667eea, #764ba2, transparent);
+  background: linear-gradient(to bottom, transparent, #d65418, hsl(0, 92%, 51%), transparent);
   transform: translateX(-50%);
 }
 
@@ -183,9 +183,9 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: #667eea;
+  background: #d65418;
   transform: translateX(-50%);
-  box-shadow: 0 0 20px rgba(102, 126, 234, 0.8);
+  box-shadow: 0 0 20px rgba(214, 28, 28, 0.8);
   z-index: 2;
 }
 
@@ -207,7 +207,7 @@
 .timelineYear {
   font-size: 1.3rem;
   font-weight: 700;
-  color: #667eea;
+  color: #f51111;
   margin-bottom: 10px;
 }
 
@@ -228,6 +228,7 @@
     transform: translateY(0);
   }
 }
+
 
 /* ============ RESPONSIVE ============ */
 @media (max-width: 768px) {

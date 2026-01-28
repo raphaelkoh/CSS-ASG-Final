@@ -150,7 +150,59 @@ export default function MachuPicchu() {
           </div>
         </div>
       </section>
-
+      {/* FAQ Section */}
+      <FAQAccordion />
     </div>
   );
 }
+
+const FAQAccordion = () => {
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const faqs = [
+    { 
+      question: "How tall is Christ the Redeemer?", 
+      answer: "The statue is 30 meters (98 feet) tall, with an additional 8-meter (26 feet) pedestal, making the total height 38 meters (124 feet)." 
+    },
+    { 
+      question: "How long did it take to build?", 
+      answer: "Construction took 9 years, from 1922 to 1931. It was officially inaugurated on October 12, 1931." 
+    },
+    { 
+      question: "What is the statue made of?", 
+      answer: "The structure is made of reinforced concrete, covered with approximately 6 million soapstone tiles." 
+    },
+    { 
+      question: "Why was it built on Corcovado Mountain?", 
+      answer: "The mountain was chosen for its height (710 meters) and visibility from almost anywhere in Rio de Janeiro, making it an ideal location for this iconic monument." 
+    },
+    { 
+      question: "Has it ever been struck by lightning?", 
+      answer: "Yes, the statue is struck by lightning several times a year. In 2014, lightning damaged the thumb and fingers, which were later restored." 
+    },
+  ];
+
+  const toggleAccordion = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  return (
+    <section className={styles.accordionSection}>
+      <h2 className={styles.accordionTitle}>Frequently Asked Questions</h2>
+      <div className={styles.accordionContainer}>
+        {faqs.map((faq, index) => (
+          <div key={index} className={styles.accordionItem}>
+            <div 
+              className={styles.accordionHeader} 
+              onClick={() => toggleAccordion(index)}
+            >
+              <h3>{faq.question}</h3>
+              <span className={styles.icon}>{openIndex === index ? '−' : '+'}</span>
+            </div>
+            {openIndex === index && <div className={styles.accordionBody}>{faq.answer}</div>}
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};

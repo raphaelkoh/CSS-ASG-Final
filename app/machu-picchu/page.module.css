@@ -250,6 +250,58 @@
   color: #ffffff;
 }
 
+/* ============ FAQ ACCORDION SECTION ============ */
+.accordionSection {
+  padding: 40px 20px;
+  background: #1a1a2e;
+  color: white;
+  text-align: center;
+}
+
+.accordionTitle {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-family: 'Cinzel', serif;
+}
+
+.accordionContainer {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.accordionItem {
+  margin-bottom: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: background 0.3s ease;
+}
+
+.accordionHeader {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.accordionHeader h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.accordionBody {
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.03);
+  text-align: left;
+  line-height: 1.6;
+}
+
+.icon {
+  font-size: 20px;
+  color: white;
+}
 /* ============ RESPONSIVE ============ */
 @media (max-width: 768px) {
   .statsGrid {
