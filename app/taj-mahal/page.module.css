@@ -1,8 +1,6 @@
-/* page.module.css */
-
 .container {
   font-family: system-ui, -apple-system, sans-serif;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 /* ============ HERO SECTION ============ */
@@ -28,14 +26,13 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.5));
   z-index: 1;
 }
 
 .heroContent {
   position: relative;
   z-index: 2;
-  transition: transform 0.1s ease-out;
 }
 
 .heroTitle {
@@ -45,7 +42,7 @@
   margin: 0 0 20px 0;
   color: #fff;
   text-shadow: 0 4px 30px rgba(0,0,0,0.5);
-  letter-spacing: 2px;
+  letter-spacing: 4px;
   animation: fadeInUp 1.2s ease-out forwards;
   opacity: 0;
 }
@@ -53,18 +50,19 @@
 .heroSubtitle {
   font-size: clamp(1.2rem, 3vw, 2rem);
   font-weight: 300;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
   text-transform: uppercase;
   margin: 0;
   animation: fadeInUp 1.2s ease-out forwards;
+  animation-delay: 0.3s;
   opacity: 0;
   text-shadow: 0 2px 20px rgba(0,0,0,0.8);
 }
 
 /* ============ STATS SECTION ============ */
 .statsSection {
-  padding: 50px 0; /* keep some top/bottom spacing */
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 50px 0;
+  background: linear-gradient(135deg, #7c2d12 0%, #991b1b 50%, #7c2d12 100%);
   color: white;
   text-align: center;
 }
@@ -73,8 +71,9 @@
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr; /* always 3 equal columns */
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 40px;
+  padding: 0 20px;
 }
 
 .statCard {
@@ -82,7 +81,6 @@
   opacity: 0;
 }
 
-/* Add different delays for staggered effect */
 .statCard:nth-child(1) {
   animation-delay: 0.3s;
 }
@@ -100,6 +98,7 @@
   font-weight: 900;
   margin-bottom: 10px;
   text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  color: #fbbf24;
 }
 
 .statLabel {
@@ -109,13 +108,341 @@
   opacity: 0.9;
 }
 
-/* hero and stats sections is default for all wonder pages */
+/* ============ SYMMETRY SECTION ============ */
+.symmetrySection {
+  position: relative;
+  padding: 100px 20px;
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
 
-/* ============ ANIMATIONS ============ */
+.symmetryContainer {
+  max-width: 1200px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.symmetryTitle {
+  text-align: center;
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-family: 'Playfair Display', serif;
+}
+
+.symmetrySubtitle {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 40px;
+}
+
+/* ============ SYMMETRY VIEWER ============ */
+.symmetryViewer {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: 600px;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  cursor: ew-resize;
+  user-select: none;
+}
+
+.symmetryImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.symmetryImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.symmetryMirror {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.symmetryMirror img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ============ SYMMETRY LINE ============ */
+.symmetryLine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(to bottom, #fbbf24, #f59e0b);
+  transform: translateX(-50%);
+  z-index: 10;
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
+}
+
+.symmetryHandle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  box-shadow: 0 4px 20px rgba(251, 191, 36, 0.4);
+  cursor: ew-resize;
+}
+
+.symmetryHandle span {
+  font-size: 18px;
+}
+
+.symmetryHint {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  margin-top: 20px;
+  font-style: italic;
+}
+
+/* ============ SYMMETRY HOTSPOTS ============ */
+.symmetryHotspot {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  z-index: 15;
+  transition: all 0.3s ease;
+}
+
+.symmetryHotspot:hover {
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+.hotspotDot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  background: rgba(251, 191, 36, 0.9);
+  border: 3px solid white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  z-index: 2;
+}
+
+.hotspotPulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  background: rgba(251, 191, 36, 0.4);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.hotspotActive .hotspotDot {
+  background: #7c2d12;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2);
+    opacity: 0;
+  }
+}
+
+/* ============ SYMMETRY INFO PANEL ============ */
+.symmetryInfo {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  margin-top: 30px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.3s ease-out;
+  position: relative;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.symmetryInfo h3 {
+  font-size: 24px;
+  font-weight: 800;
+  margin: 0 0 15px 0;
+  color: #7c2d12;
+}
+
+.symmetryInfo p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  margin: 0;
+}
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #666;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  z-index: 10;
+}
+
+.closeButton:hover {
+  background: #f0f0f0;
+  color: #333;
+}
+
+/* ============ FAQ ACCORDION SECTION ============ */
+.accordionSection {
+  padding: 40px 20px;
+  background: #1e1b4b;
+  color: white;
+  text-align: center;
+}
+
+.accordionTitle {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-family: 'Playfair Display', serif;
+}
+
+.accordionContainer {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.accordionItem {
+  margin-bottom: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: background 0.3s ease;
+}
+
+.accordionHeader {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.accordionHeader h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.accordionBody {
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.03);
+  text-align: left;
+  line-height: 1.6;
+}
+
+.icon {
+  font-size: 20px;
+  color: white;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 1024px) {
+  .symmetryViewer {
+    height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .heroTitle {
+    font-size: 3rem;
+  }
+
+  .symmetryViewer {
+    height: 400px;
+  }
+
+  .symmetryInfo {
+    margin-top: 20px;
+  }
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
   }
   to {
     opacity: 1;
