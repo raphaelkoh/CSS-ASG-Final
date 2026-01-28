@@ -6,7 +6,6 @@ import Navbar from '../nav/Navbar';
 
 export default function Petra() {
   const [activeHotspot, setActiveHotspot] = useState(null);
-  const [isDayMode, setIsDayMode] = useState(true);
 
   // Hotspot data for different architectural features
   const hotspots = [
@@ -51,10 +50,6 @@ export default function Petra() {
     setActiveHotspot(activeHotspot === id ? null : id);
   };
 
-  const toggleDayNight = () => {
-    setIsDayMode(!isDayMode);
-  };
-
   return (
     <div className={styles.container}>
       <Navbar />
@@ -90,24 +85,8 @@ export default function Petra() {
           <h2 className={styles.panoramaTitle}>Explore the Treasury</h2>
           <p className={styles.panoramaSubtitle}>Click the hotspots to discover architectural features</p>
 
-          {/* Day/Night Toggle */}
-          <div className={styles.toggleContainer}>
-            <button 
-              className={`${styles.toggleButton} ${isDayMode ? styles.active : ''}`}
-              onClick={toggleDayNight}
-            >
-              <span className={styles.toggleIcon}>☀️</span> Day
-            </button>
-            <button 
-              className={`${styles.toggleButton} ${!isDayMode ? styles.active : ''}`}
-              onClick={toggleDayNight}
-            >
-              <span className={styles.toggleIcon}>🌙</span> Night
-            </button>
-          </div>
-
           {/* Panorama Image Container */}
-          <div className={`${styles.panoramaWrapper} ${isDayMode ? styles.dayMode : styles.nightMode}`}>
+          <div className={styles.panoramaWrapper}>
             <div className={styles.panoramaImage}>
               {/* Using petra.jpg for the interactive viewer */}
               <img 
@@ -157,10 +136,6 @@ export default function Petra() {
               ))}
             </div>
           </div>
-
-          <p className={styles.panoramaHint}>
-            💡 Tip: Toggle between day and night to see how Petra transforms
-          </p>
         </div>
       </section>
 
