@@ -29,7 +29,7 @@ export default function Home() {
       year: '1931 AD',
       description: 'An iconic statue of Jesus Christ overlooking Rio de Janeiro from Corcovado mountain.',
       link: '/christ-the-redeemer',
-      image: '/christ1.jpg',
+      image: '/christ-redeemer.jpg',
     },
     {
       name: 'Machu Picchu',
