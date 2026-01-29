@@ -1,3 +1,4 @@
+// home page
 // app/page.jsx
 "use client";
 
@@ -5,11 +6,73 @@ import Navbar from './nav/Navbar';
 import styles from './page.module.css';
 
 export default function Home() {
+  const wonders = [
+    {
+      name: 'Great Wall of China',
+      location: 'China',
+      year: '7th Century BC',
+      description: 'An ancient series of fortifications spanning thousands of miles across northern China.',
+      link: '/great-wall',
+      image: '/greatwall1.jpg',
+    },
+    {
+      name: 'Petra',
+      location: 'Jordan',
+      year: '312 BC',
+      description: 'An archaeological city famous for its rock-cut architecture and water conduit system.',
+      link: '/petra',
+      image: '/petra.jpg',
+    },
+    {
+      name: 'Christ the Redeemer',
+      location: 'Brazil',
+      year: '1931 AD',
+      description: 'An iconic statue of Jesus Christ overlooking Rio de Janeiro from Corcovado mountain.',
+      link: '/christ-the-redeemer',
+      image: '/christ1.jpg',
+    },
+    {
+      name: 'Machu Picchu',
+      location: 'Peru',
+      year: '1450 AD',
+      description: 'An ancient Incan citadel set high in the Andes Mountains above the Urubamba River valley.',
+      link: '/machu-picchu',
+      image: '/machupicchu1.jpg',
+    },
+    {
+      name: 'Chichen Itza',
+      location: 'Mexico',
+      year: '600 AD',
+      description: 'A complex of Mayan ruins featuring the iconic El Castillo pyramid temple.',
+      link: '/chichen-itza',
+      image: '/chichenitza1.jpg',
+    },
+    {
+      name: 'Colosseum',
+      location: 'Italy',
+      year: '80 AD',
+      description: 'An ancient Roman amphitheater known for gladiatorial contests and public spectacles.',
+      link: '/colosseum',
+      image: '/colosseum1.jpg',
+    },
+    {
+      name: 'Taj Mahal',
+      location: 'India',
+      year: '1653 AD',
+      description: 'An ivory-white marble mausoleum, a monument to eternal love and architectural perfection.',
+      link: '/taj-mahal',
+      image: '/tajmahal1.jpg',
+    }
+  ];
+
   return (
     <>
       <Navbar />
+
+      {/* Hero Section */}
       <section className={styles.hero}>
-        {/* Video background */}
+        {/* Optional video background */}
+        {/* Uncomment if you want video */}
         <video
           className={styles.heroVideo}
           src="/earth.mp4"
@@ -18,12 +81,101 @@ export default function Home() {
           muted
           playsInline
         />
+        
+
         {/* Dark overlay */}
         <div className={styles.heroOverlay} />
 
-        {/* Content on top */}
+        {/* Hero content */}
         <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle}>The Wonders of the World</h1>
+          <h1 className={styles.heroTitle}>
+            <span className={styles.titleLine1}>Come discover the</span>
+            <span className={styles.titleLine2}>Wonders of the World</span>
+          </h1>
+
+          <p className={styles.heroSubtitle}>
+            Journey through time to explore humanity's greatest architectural
+            achievements. From ancient civilizations to modern marvels, witness
+            the monuments that shaped our world.
+          </p>
+          
+          <div className={styles.heroButtons}>
+            <a href="#wonders" className="btn">Explore Wonders</a>
+            <a href="/tours" className={`btn ${styles.btnSecondary}`}>Book a Tour</a>
+          </div>
+        </div>
+        <div className={styles.heroOverlay}></div>
+      </section>
+
+      {/* Introduction Section */}
+      <section className={styles.introSection}>
+        <div className="container">
+          <div className={styles.introContent}>
+            <h2>A Legacy of Human Achievement</h2>
+            <div className="decorative-line"></div>
+            <p>
+              The Seven Wonders of the World represent the pinnacle of human creativity,
+              engineering, and cultural significance. Each wonder tells a unique story of
+              the civilization that created it, standing as a testament to human ingenuity
+              and the desire to create something magnificent that transcends time.
+            </p>
+            <p>
+              These architectural masterpieces span different eras, continents, and
+              cultures, yet they share a common thread: they inspire awe and wonder in
+              all who behold them. From the ancient fortifications of China to the
+              spiritual monuments of India, each site offers a window into the past and
+              a glimpse of human potential.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="wonders" className={styles.wondersSection}>
+        <div className="container">
+          <h2 className="text-center">The Seven Wonders</h2>
+          <div className="decorative-line"></div>
+          <p className={`${styles.sectionSubtitle} text-center`}>
+            Click on each wonder to explore its history, architecture, and cultural significance
+          </p>
+
+          <div className={styles.wondersGrid}>
+            {wonders.map((wonder, index) => (
+              <article key={index} className={styles.wonderCard}>
+                <a href={wonder.link} className={styles.cardLink}>
+                  <div className={styles.cardImage}><img src={wonder.image} alt={wonder.name} className={styles.cardImage} /></div>
+                  <div className={styles.cardContent}>
+                    <h3 className={styles.cardTitle}>{wonder.name}</h3>
+                    <div className={styles.cardMeta}>
+                      <span className={styles.location}>📍 {wonder.location}</span>
+                      <span className={styles.year}>📅 {wonder.year}</span>
+                    </div>
+                    <p className={styles.cardDescription}>{wonder.description}</p>
+                    <span className={styles.cardButton}>
+                      Explore <span className={styles.arrow}>→</span>
+                    </span>
+                  </div>
+                </a>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className={styles.ctaSection}>
+        <div className="container">
+          <div className={styles.ctaContent}>
+            <h2>Ready to Explore?</h2>
+            <div className="decorative-line"></div>
+            <p>
+              Plan your journey to visit these incredible monuments. Our curated tours
+              offer expert guides, comfortable accommodations, and unforgettable experiences.
+            </p>
+            <div className={styles.ctaButtons}>
+              <a href="/tours" className="btn">View Tours</a>
+              <a href="/contact" className={`btn ${styles.btnOutline}`}>Contact Us</a>
+            </div>
+          </div>
         </div>
       </section>
     </>
