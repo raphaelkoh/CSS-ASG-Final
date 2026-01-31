@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import styles from './page.module.css';
 import Navbar from '../nav/Navbar';
+import Footer from '../footer/footer.jsx'
 
 export default function Petra() {
   const [activeHotspot, setActiveHotspot] = useState(null);
@@ -164,6 +165,7 @@ export default function Petra() {
 
       {/* FAQ Section */}
       <FAQAccordion />
+      <Footer />
     </div>
   );
 }

@@ -62,8 +62,8 @@
 
 /* ============ STATS SECTION ============ */
 .statsSection {
-  padding: 50px 0; /* keep some top/bottom spacing */
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 50px 0;
+  background: linear-gradient(135deg, #2e7d32 0%, #66bb6a 100%);
   color: white;
   text-align: center;
 }
@@ -240,9 +240,14 @@
   padding: 10px 20px;
   border-radius: 30px;
   border: none;
-  background: #667eea;
+  background: #2e7d32; /* jungle green */
   color: #ffffff;
   cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.navButton:hover {
+  background: #66bb6a; /* lighter green on hover */
 }
 
 .counter {
@@ -253,7 +258,7 @@
 /* ============ FAQ ACCORDION SECTION ============ */
 .accordionSection {
   padding: 40px 20px;
-  background: #1a1a2e;
+  background: #0b3d2e; /* deep forest green for contrast */
   color: white;
   text-align: center;
 }
@@ -282,26 +287,27 @@
   display: flex;
   justify-content: space-between;
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.08); /* subtle lighter overlay */
 }
 
 .accordionHeader h3 {
   margin: 0;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 16px;   /* same as before */
+  font-weight: 600;  /* same as before */
 }
 
 .accordionBody {
   padding: 15px;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.05);
   text-align: left;
   line-height: 1.6;
 }
 
 .icon {
   font-size: 20px;
-  color: white;
+  color: #a5d6a7; /* lighter green for icons */
 }
+
 /* ============ RESPONSIVE ============ */
 @media (max-width: 768px) {
   .statsGrid {

@@ -4,6 +4,7 @@
 import React, { useState } from 'react';
 import styles from './page.module.css';
 import Navbar from '../nav/Navbar';
+import Footer from '../footer/footer.jsx'
 
 const landmarks = [
   {
@@ -152,6 +153,7 @@ export default function MachuPicchu() {
       </section>
       {/* FAQ Section */}
       <FAQAccordion />
+      <Footer />
     </div>
   );
 }

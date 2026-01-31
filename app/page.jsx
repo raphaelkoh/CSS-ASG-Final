@@ -4,6 +4,7 @@
 
 import Navbar from './nav/Navbar';
 import styles from './page.module.css';
+import Footer from './footer/footer.jsx';
 
 export default function Home() {
   const wonders = [
@@ -100,7 +101,7 @@ export default function Home() {
           </p>
           
           <div className={styles.heroButtons}>
-            <a href="#wonders" className="btn">Explore Wonders</a>
+            <a href="#wonders" className={`btn ${styles.btnPrimary}`}>Explore Wonders</a>
             <a href="/tours" className={`btn ${styles.btnSecondary}`}>Book a Tour</a>
           </div>
         </div>
@@ -172,10 +173,11 @@ export default function Home() {
               offer expert guides, comfortable accommodations, and unforgettable experiences.
             </p>
             <div className={styles.ctaButtons}>
-              <a href="/tours" className="btn">View Tours</a>
-              <a href="/contact" className={`btn ${styles.btnOutline}`}>Contact Us</a>
+              <a href="/tours" className={`btn ${styles.btnPrimary}`}>View Tours</a>
+              <a href="/contact" className={`btn ${styles.btnSecondary}`}>Contact Us</a>
             </div>
           </div>
+          <Footer />
         </div>
       </section>
     </>

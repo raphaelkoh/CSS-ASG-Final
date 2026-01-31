@@ -65,9 +65,24 @@
 /* ============ STATS SECTION ============ */
 .statsSection {
   padding: 50px 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: linear-gradient(135deg, #556b2f 0%, #3b5323 100%); /* muddy olive green gradient */
+  color: #f5f5f5; /* light text for contrast */
   text-align: center;
+}
+
+.statNumber {
+  font-size: 56px; 
+  font-weight: 900;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+}
+
+.statLabel {
+  font-size: 18px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.95;
+  color: #d9c7a3; /* limestone beige accent for labels */
 }
 
 .statsGrid {
@@ -96,35 +111,35 @@
   animation-delay: 0.9s;
 }
 
-.statNumber {
-  font-size: 56px; 
-  font-weight: 900;
-  margin-bottom: 10px;
-  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
-}
-
-.statLabel {
-  font-size: 18px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  opacity: 0.9;
-}
-
 /* ============ CALENDAR SECTION ============ */
 .calendarSection {
+  position: relative; /* needed for overlay */
   padding: 100px 20px;
-  background: linear-gradient(135deg, #0f3460 0%, #16213e 50%, #1a1a2e 100%);
-  color: white;
-  position: relative;
-}
+  background: url('/chichenitza2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.calendarSection::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1;
+}
 .sectionTitle {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 800;
   text-align: center;
   margin-bottom: 15px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #a5fc6c, #bcffaf);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -147,8 +162,8 @@
   right: 0;
   bottom: 0;
   background-image: 
-    radial-gradient(circle at 20% 30%, rgba(102, 126, 234, 0.05) 0%, transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(118, 75, 162, 0.05) 0%, transparent 40%);
+    radial-gradient(circle at 20% 30%, rgba(234, 188, 102, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(162, 134, 75, 0.05) 0%, transparent 40%);
   pointer-events: none;
 }
 
@@ -186,27 +201,45 @@
 }
 
 .dateInput {
-  padding: 15px 25px;
-  font-size: 18px;
-  border: 2px solid rgba(102, 126, 234, 0.5);
-  border-radius: 15px;
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
+  padding: 16px 20px;
+  font-size: 16px;
+  border: 2px solid #d9c7a3;
+  border-radius: 10px;
+  background: #f7923f81;
+  color: #000000;
   width: 100%;
-  max-width: 300px;
+  max-width: 350px;
   transition: all 0.3s ease;
-  backdrop-filter: blur(5px);
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .dateInput:focus {
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 20px rgba(102, 126, 234, 0.4);
-  background: rgba(255, 255, 255, 0.15);
+  border-color: #a5fc6c;
+  box-shadow: 0 0 0 3px rgba(165, 252, 108, 0.3);
+}
+
+.dateInput:hover {
+  border-color: #a5fc6c;
 }
 
 .dateInput::-webkit-calendar-picker-indicator {
-  filter: invert(1);
+  cursor: pointer;
+  font-size: 18px;
+  color: black;
+}
+
+.dateInput::-webkit-datetime-edit-text,
+.dateInput::-webkit-datetime-edit-month-field,
+.dateInput::-webkit-datetime-edit-day-field,
+.dateInput::-webkit-datetime-edit-year-field {
+  color: #000000;
+}
+
+/* Firefox */
+.dateInput::-moz-calendar-picker-indicator {
   cursor: pointer;
 }
 
@@ -215,17 +248,17 @@
   font-size: 18px;
   font-weight: 700;
   color: white;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #c97a4c 0%, #a2864b 100%);
   border: none;
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 10px 30px rgba(234, 177, 102, 0.4);
 }
 
 .calculateButton:hover:not(:disabled) {
   transform: translateY(-3px);
-  box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+  box-shadow: 0 15px 40px rgba(234, 177, 102, 0.6);
 }
 
 .calculateButton:disabled {
@@ -238,29 +271,18 @@
   animation: fadeInScale 0.6s ease-out forwards;
 }
 
-@keyframes fadeInScale {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
 .resultsHeader {
   text-align: center;
   margin-bottom: 40px;
   padding-bottom: 30px;
-  border-bottom: 2px solid rgba(102, 126, 234, 0.3);
+  border-bottom: 2px solid rgba(234, 144, 102, 0.3);
 }
 
 .resultsHeader h3 {
   font-size: 32px;
   font-weight: 800;
   margin: 0 0 10px 0;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #eaac66, #a27c4b);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -280,8 +302,8 @@
 }
 
 .calendarCard {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-  border: 2px solid rgba(102, 126, 234, 0.3);
+  background: linear-gradient(135deg, rgba(234, 172, 102, 0.1) 0%, rgba(162, 92, 75, 0.192) 100%);
+  border: 2px solid rgba(234, 150, 102, 0.3);
   border-radius: 20px;
   padding: 30px;
   text-align: center;
@@ -297,24 +319,15 @@
   left: 0;
   right: 0;
   height: 5px;
-  background: linear-gradient(90deg, #667eea, #764ba2);
+  background: linear-gradient(90deg, #eac066, #a36450);
   transform: scaleX(0);
   transition: transform 0.3s ease;
 }
 
-.calendarCard:hover::before {
-  transform: scaleX(1);
-}
-
-.calendarCard:hover {
-  transform: translateY(-5px);
-  border-color: #667eea;
-  box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
-}
 
 .calendarBadge {
   display: inline-block;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #eaac66, #a2794b);
   color: white;
   padding: 5px 15px;
   border-radius: 20px;
@@ -344,8 +357,8 @@
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
-  border: 3px solid rgba(102, 126, 234, 0.5);
+  background: linear-gradient(135deg, rgba(234, 166, 102, 0.2), rgba(162, 110, 75, 0.2));
+  border: 3px solid rgba(234, 172, 102, 0.5);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   position: relative;
 }
@@ -355,7 +368,7 @@
   position: absolute;
   inset: -5px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #eaac66, #a2794b);
   opacity: 0;
   transition: opacity 0.3s;
   z-index: -1;
@@ -366,21 +379,11 @@
   animation: glyphPulse 2s infinite;
 }
 
-@keyframes glyphPulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.3;
-  }
-  50% {
-    transform: scale(1.1);
-    opacity: 0.5;
-  }
-}
 
 .glyphNumber {
   font-size: 36px;
   font-weight: 900;
-  color: #667eea;
+  color: #ea9066;
   line-height: 1;
 }
 
@@ -400,8 +403,8 @@
 
 /* ============ MEANING CARD ============ */
 .meaningCard {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15));
-  border: 2px solid rgba(102, 126, 234, 0.4);
+  background: linear-gradient(135deg, rgba(234, 150, 102, 0.15), rgba(162, 114, 75, 0.15));
+  border: 2px solid rgba(234, 166, 102, 0.4);
   border-radius: 20px;
   padding: 35px;
   margin-bottom: 30px;
@@ -422,7 +425,7 @@
   font-size: 26px;
   font-weight: 800;
   margin: 0 0 15px 0;
-  color: #667eea;
+  color: #eaa166;
 }
 
 .meaningText {
@@ -439,7 +442,7 @@
   padding: 15px;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 10px;
-  border-left: 4px solid #667eea;
+  border-left: 4px solid #eaa166;
 }
 
 /* ============ FUN FACTS ============ */
@@ -454,7 +457,7 @@
   font-size: 22px;
   font-weight: 700;
   margin: 0 0 20px 0;
-  color: #667eea;
+  color: #ffffff;
 }
 
 .funFacts ul {
@@ -480,7 +483,7 @@
   content: '•';
   position: absolute;
   left: 10px;
-  color: #667eea;
+  color: #ea9666;
   font-size: 20px;
 }
 
@@ -513,98 +516,67 @@
 
 /* ============ FAQ ACCORDION ============ */
 .accordionSection {
-  padding: 80px 20px;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  padding: 40px 20px; /* reduced from 80px */
+  background: linear-gradient(135deg, #2e2e2e 0%, #3c3c3c 100%);
   color: white;
   text-align: center;
 }
 
 .accordionTitle {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: 2.5rem;
-  margin-bottom: 50px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  font-size: 2rem; /* reduced from 2.5rem */
+  margin-bottom: 20px; /* reduced from 50px */
+  background: linear-gradient(135deg, #40e0d0, #c8a600);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .accordionContainer {
-  max-width: 800px;
+  max-width: 600px; /* narrower to match previous FAQs */
   margin: 0 auto;
 }
 
 .accordionItem {
-  margin-bottom: 15px;
-  border: 1px solid rgba(102, 126, 234, 0.3);
-  border-radius: 15px;
+  margin-bottom: 10px; /* reduced spacing */
+  border: 1px solid rgba(64, 224, 208, 0.4);
+  border-radius: 8px; /* smaller radius */
   overflow: hidden;
-  transition: all 0.3s ease;
   background: rgba(255, 255, 255, 0.03);
 }
 
-.accordionItem:hover {
-  border-color: rgba(102, 126, 234, 0.6);
-  transform: translateX(5px);
-}
-
 .accordionHeader {
-  padding: 20px 25px;
+  padding: 15px; /* reduced from 20px 25px */
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
   background: rgba(255, 255, 255, 0.05);
-  transition: background 0.3s ease;
-}
-
-.accordionHeader:hover {
-  background: rgba(255, 255, 255, 0.08);
 }
 
 .accordionHeader h3 {
   margin: 0;
-  font-size: 18px;
+  font-size: 16px; /* reduced from 18px */
   font-weight: 600;
   text-align: left;
   color: rgba(255, 255, 255, 0.9);
 }
 
 .accordionBody {
-  padding: 20px 25px;
+  padding: 15px; /* reduced from 20px 25px */
   background: rgba(255, 255, 255, 0.03);
   text-align: left;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 16px;
-  animation: slideDown 0.3s ease-out;
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    max-height: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-  to {
-    opacity: 1;
-    max-height: 500px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 14px; /* reduced from 16px */
 }
 
 .icon {
-  font-size: 24px;
-  color: #667eea;
+  font-size: 20px; /* reduced from 24px */
+  color: #40e0d0;
   font-weight: bold;
-  transition: transform 0.3s ease;
 }
 
-.accordionItem:hover .icon {
-  transform: scale(1.2);
-}
 
 /* ============ ANIMATIONS ============ */
 @keyframes fadeInUp {

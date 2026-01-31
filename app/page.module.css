@@ -35,14 +35,13 @@
 .heroOverlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 1;
+  background: rgba(0, 0, 0, 0.418);
 }
 
 /* Hero content */
 .heroContent {
   position: relative;
-  z-index: 2;
+  z-index: 1;
   max-width: 900px;
   padding: 20px;
 }
@@ -58,17 +57,24 @@
 .titleLine1 {
   font-size: 32px;
   font-weight: 300;
+  font-family: system-ui, -apple-system, sans-serif;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 25px;
 }
 
 .titleLine2 {
-  font-size: 64px;
+  font-size: 75px;
+  font-family: 'Playfair Display', Georgia, serif;
 }
 
 .heroSubtitle {
   margin-top: 20px;
-  font-size: 18px;
+  font-size: 23px;
   line-height: 1.6;
   color: #dddddd;
+  font-weight: 325;
+  font-family: system-ui, -apple-system, sans-serif;
 }
 
 /* Hero buttons */
@@ -77,12 +83,40 @@
   display: flex;
   gap: 20px;
   justify-content: center;
+  
+}
+
+.btnPrimary {
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 100px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: system-ui, -apple-system, sans-serif;
 }
 
 .btnSecondary {
   background-color: transparent;
   border: 1px solid white;
+  border-radius: 100px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
   color: white;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.btnPrimary:hover {
+  background-color: white;
+  color: black;
+}
+
+.btnSecondary:hover {
+  background-color: white;
+  color: black;
 }
 
 /* ===============================
@@ -100,29 +134,38 @@
 }
 
 .introContent h2 {
-  font-size: 36px;
-  margin-bottom: 20px;
+  font-size: 53px;
+  margin-bottom: 30px;
+  font-family: 'Playfair Display', Georgia, serif;
 }
 
 .introContent p {
-  font-size: 17px;
+  font-size: 20px;
   line-height: 1.7;
   color: #cccccc;
   margin-bottom: 20px;
+  text-align: justify;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-weight: 325;
 }
 
 /* ===============================
    WONDERS SECTION
 ================================ */
 .wondersSection {
-  padding: 80px 20px;
+  padding: 100px 300px;
   background-color: #0f0f0f;
+  text-align: center;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 45px;
 }
 
 .sectionSubtitle {
   margin-top: 10px;
   color: #cccccc;
-  font-size: 16px;
+  font-size: 20px;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-weight: 325;
 }
 
 /* Grid layout */
@@ -136,14 +179,14 @@
 /* Individual card */
 .wonderCard {
   background-color: #181818;
-  border-radius: 6px;
+  border-radius: 20px;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .wonderCard:hover {
   transform: translateY(-8px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 10px 20px rgb(239, 229, 176);
 }
 
 .cardLink {
@@ -166,7 +209,7 @@
 }
 
 .cardTitle {
-  font-size: 22px;
+  font-size: 24px;
   margin-bottom: 10px;
 }
 
@@ -191,6 +234,33 @@
   color: white;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-size: 20px;
+}
+
+.location,
+.year {
+  margin-left: 15px;
+  margin-right: 15px;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 300;
+}
+
+.cardDescription {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-weight: 350;
+  padding-bottom: 15px;
+}
+
+.cardButton {
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 100px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  font-family: system-ui, -apple-system, sans-serif;
 }
 
 .cardButton:hover {
@@ -213,12 +283,15 @@
 }
 
 .ctaContent h2 {
-  font-size: 36px;
+  font-size: 53px;
+  font-family: 'Playfair Display', Georgia, serif;
   margin-bottom: 20px;
 }
 
 .ctaContent p {
-  font-size: 17px;
+  font-size: 21px;
+  font-weight: 325;
+  font-family: system-ui, -apple-system, sans-serif;
   line-height: 1.6;
   color: #cccccc;
   margin-bottom: 30px;

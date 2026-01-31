@@ -5,6 +5,7 @@ import { useState } from 'react';
 import styles from './page.module.css';
 import Link from 'next/link';
 import Navbar from '../nav/Navbar';
+import Footer from '../footer/footer.jsx'
 
 export default function ToursPage() {
   const [selectedTour, setSelectedTour] = useState(null);
@@ -166,6 +167,7 @@ export default function ToursPage() {
           ))}
         </div>
       </section>
+      <Footer />
     </div>
   );
 }

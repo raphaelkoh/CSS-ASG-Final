@@ -435,14 +435,32 @@
 /* ============ TIMELINE SECTION ============ */
 .timelineSection {
   padding: 100px 20px;
-  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  background: url('/christ-redeemer2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
   color: white;
   position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.timelineSection::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1;
 }
 
 .timelineContainer {
   max-width: 1200px;
   margin: 0 auto;
+  z-index: 2;
 }
 
 .timelineTitle {

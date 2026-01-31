@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import styles from './page.module.css';
 import Navbar from '../nav/Navbar';
+import Footer from '../footer/footer.jsx'
 
 export default function ChristTheRedeemer() {
   const [activeComparison, setActiveComparison] = useState(null);
@@ -259,6 +260,7 @@ export default function ChristTheRedeemer() {
 
       {/* FAQ Section */}
       <FAQAccordion />
+      <Footer />
     </div>
   );
 }

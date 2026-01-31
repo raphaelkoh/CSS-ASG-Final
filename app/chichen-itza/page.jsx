@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import styles from './page.module.css';
 import Navbar from '../nav/Navbar';
+import Footer from '../footer/footer.jsx'
 
 export default function ChichenItza() {
   const [birthDate, setBirthDate] = useState('');
@@ -76,6 +77,15 @@ export default function ChichenItza() {
     });
   };
 
+  const handleDateChange = (e) => {
+    const selectedDate = e.target.value;
+    setBirthDate(selectedDate);
+    // Auto-calculate when date is selected
+    if (selectedDate) {
+      calculateMayanDate(selectedDate);
+    }
+  };
+
   return (
     <div className={styles.container}>
       <Navbar />
@@ -116,11 +126,14 @@ export default function ChichenItza() {
           <div className={styles.calendarWrapper}>
             {/* Input Section */}
             <div className={styles.inputSection}>
-              <label className={styles.inputLabel}>Enter Your Birth Date</label>
+              <label htmlFor="birthdate-input" className={styles.inputLabel}>
+                Enter Your Birth Date
+              </label>
               <input
+                id="birthdate-input"
                 type="date"
                 value={birthDate}
-                onChange={(e) => setBirthDate(e.target.value)}
+                onChange={handleDateChange}
                 className={styles.dateInput}
                 max={new Date().toISOString().split('T')[0]}
               />
@@ -129,7 +142,7 @@ export default function ChichenItza() {
                 className={styles.calculateButton}
                 disabled={!birthDate}
               >
-                Decode My Mayan Date
+                {birthDate ? 'Decode My Mayan Date' : 'Select a Date First'}
               </button>
             </div>
 
@@ -212,6 +225,7 @@ export default function ChichenItza() {
 
       {/* FAQ Section */}
       <FAQAccordion />
+      <Footer />
     </div>
   );
 }
@@ -259,7 +273,9 @@ const FAQAccordion = () => {
               <h3>{faq.question}</h3>
               <span className={styles.icon}>{openIndex === index ? '−' : '+'}</span>
             </div>
-            {openIndex === index && <div className={styles.accordionBody}>{faq.answer}</div>}
+            {openIndex === index && (
+              <div className={styles.accordionBody}>{faq.answer}</div>
+            )}
           </div>
         ))}
       </div>

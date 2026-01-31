@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import styles from './page.module.css';
 import Navbar from '../nav/Navbar';
+import Footer from '../footer/footer.jsx'
 
 export default function TajMahal() {
   const [symmetryPosition, setSymmetryPosition] = useState(50); // Percentage position of symmetry line
@@ -205,6 +206,7 @@ export default function TajMahal() {
 
       {/* FAQ Section */}
       <FAQAccordion />
+      <Footer />
     </div>
   );
 }

@@ -8,6 +8,7 @@
 import { useState } from 'react';
 import styles from './page.module.css';
 import Navbar from '../nav/Navbar';
+import Footer from '../footer/footer.jsx'
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -81,7 +82,7 @@ export default function ContactPage() {
     <div className={styles.contactPage}>
       <Navbar></Navbar>
       {/* Page Header */}
-      <section className={styles.pageHeader}>
+      <section className={styles.pageHeader} style={{ paddingTop: '10rem' }}>
         <div className={styles.headerContent}>
           <h1>Contact Us</h1>
           <div className={styles.headerLine}></div>
@@ -298,6 +299,7 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }
