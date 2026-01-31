@@ -1,4 +1,4 @@
-// page.jsx - SIMPLIFIED
+// page.jsx
 'use client';
 
 import { useState } from 'react';
@@ -8,8 +8,9 @@ import Navbar from '../nav/Navbar';
 import Footer from '../footer/footer.jsx'
 
 export default function ToursPage() {
+   // Track which tour is currently expanded
   const [selectedTour, setSelectedTour] = useState(null);
-
+ // Tour package data
   const tours = [
     {
       id: 'asia-explorer',
@@ -63,7 +64,7 @@ export default function ToursPage() {
       difficulty: 'Challenging'
     }
   ];
-
+// Feature highlights for why to book with us
   const features = [
     { icon: '👨‍🏫', title: 'Expert Guides', text: 'Knowledgeable local guides with deep understanding of history and culture.' },
     { icon: '🏨', title: 'Quality Accommodations', text: 'Carefully selected hotels offering comfort and authentic local character.' },
@@ -73,6 +74,7 @@ export default function ToursPage() {
     { icon: '🎫', title: 'Skip the Lines', text: 'Priority access to attractions means more time exploring.' }
   ];
 
+  // Common questions about tours
   const faqs = [
     { q: "What's included in the tour price?", a: 'Tour prices include accommodations, most meals, transportation, entrance fees, expert guides, and airport transfers.' },
     { q: 'Are flights included?', a: 'International flights to the first destination are not included, but all inter-destination flights during the tour are covered.' },
@@ -83,7 +85,7 @@ export default function ToursPage() {
     <div className={styles.page}>
       <Navbar></Navbar>
       {/* Header */}
-      <section className={styles.header}>
+      <section className={styles.header} style={{ paddingTop: '8rem' }}>
         <h1>Tour Packages</h1>
         <p>Embark on the journey of a lifetime with our carefully curated tour packages. Pick the one that catches your eye and we'll make it an unforgettable experience.</p>
       </section>

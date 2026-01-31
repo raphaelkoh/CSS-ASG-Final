@@ -1,6 +1,7 @@
 /**
  * Footer Component
- * Site-wide footer with social links and information
+ * Site-wide footer with links, wonder navigation, and social media
+ * Used on every page for consistent branding
  */
 
 import styles from './footer.module.css';
@@ -11,8 +12,10 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.footerContainer}>
-        {/* Footer Content */}
+        
+        {/* Main footer content grid */}
         <div className={styles.footerGrid}>
+          
           {/* About Section */}
           <div className={styles.footerSection}>
             <h3 className={styles.footerTitle}>About</h3>
@@ -23,7 +26,7 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Quick Links */}
+          {/* Quick Links Section */}
           <div className={styles.footerSection}>
             <h3 className={styles.footerTitle}>Quick Links</h3>
             <ul className={styles.footerLinks}>
@@ -34,7 +37,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Wonders */}
+          {/* Wonders Section - links to all wonder pages */}
           <div className={styles.footerSection}>
             <h3 className={styles.footerTitle}>The Wonders</h3>
             <ul className={styles.footerLinks}>
@@ -48,7 +51,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Social Media Section */}
           <div className={styles.footerSection}>
             <h3 className={styles.footerTitle}>Connect</h3>
             <ul className={styles.socialLinks}>
@@ -76,10 +79,10 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Decorative Line */}
+        {/* Decorative divider line */}
         <div className={styles.divider}></div>
 
-        {/* Copyright */}
+        {/* Copyright and disclaimer */}
         <div className={styles.copyright}>
           <p>&copy; {currentYear} Wonders of the World. Assignment for CSS Module.</p>
           <p className={styles.disclaimer}>

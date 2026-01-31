@@ -1,6 +1,7 @@
 /**
  * Contact Page
- * Contact form and information
+ * Contact form and information for reaching out
+ * Includes form validation and checkbox selections
  */
 
 'use client';
@@ -8,9 +9,9 @@
 import { useState } from 'react';
 import styles from './page.module.css';
 import Navbar from '../nav/Navbar';
-import Footer from '../footer/footer.jsx'
 
 export default function ContactPage() {
+  // Form state - tracks all input values
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -21,16 +22,20 @@ export default function ContactPage() {
     newsletter: false
   });
 
+  // Track form submission status
   const [formStatus, setFormStatus] = useState('idle');
 
+  // Handle all form input changes
   const handleChange = (e) => {
     const { name, value, type } = e.target;
     
     if (type === 'checkbox') {
       const checkbox = e.target;
       if (name === 'newsletter') {
+        // Handle newsletter checkbox
         setFormData(prev => ({ ...prev, newsletter: checkbox.checked }));
       } else if (name === 'interests') {
+        // Handle multiple interest checkboxes
         setFormData(prev => ({
           ...prev,
           interests: checkbox.checked
@@ -39,20 +44,22 @@ export default function ContactPage() {
         }));
       }
     } else {
+      // Handle regular text inputs
       setFormData(prev => ({ ...prev, [name]: value }));
     }
   };
 
+  // Form submission handler
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormStatus('submitting');
 
-    // Simulate form submission
+    // Simulate form submission (replace with actual API call later)
     setTimeout(() => {
       console.log('Form submitted:', formData);
       setFormStatus('success');
       
-      // Reset form after 3 seconds
+      // Reset form after showing success message
       setTimeout(() => {
         setFormData({
           name: '',
@@ -68,6 +75,7 @@ export default function ContactPage() {
     }, 1500);
   };
 
+  // List of wonders for checkbox selection
   const wonders = [
     'Great Wall of China',
     'Petra',
@@ -81,8 +89,9 @@ export default function ContactPage() {
   return (
     <div className={styles.contactPage}>
       <Navbar></Navbar>
+      
       {/* Page Header */}
-      <section className={styles.pageHeader} style={{ paddingTop: '10rem' }}>
+      <section className={styles.pageHeader} style={{ paddingTop: '8rem' }}>
         <div className={styles.headerContent}>
           <h1>Contact Us</h1>
           <div className={styles.headerLine}></div>
@@ -93,11 +102,12 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Contact Content */}
+      {/* Main Contact Content */}
       <section className={styles.contactContent}>
         <div className="container">
           <div className={styles.contentGrid}>
-            {/* Contact Information */}
+            
+            {/* Left side - Contact Information */}
             <div className={styles.contactInfo}>
               <h2>Get in Touch</h2>
               <div className="decorative-line" style={{ margin: '1rem 0' }}></div>
@@ -136,6 +146,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
+              {/* Business hours table */}
               <div className={styles.hoursBox}>
                 <h3>Business Hours</h3>
                 <table>
@@ -157,11 +168,12 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Contact Form */}
+            {/* Right side - Contact Form */}
             <div className={styles.contactForm}>
               <h2>Send Us a Message</h2>
               <div className="decorative-line" style={{ margin: '1rem 0' }}></div>
 
+              {/* Success message shown after form submission */}
               {formStatus === 'success' && (
                 <div className={styles.successMessage}>
                   <span className={styles.successIcon}>✓</span>
@@ -170,6 +182,7 @@ export default function ContactPage() {
               )}
 
               <form onSubmit={handleSubmit} className={styles.form}>
+                {/* Name input */}
                 <div className={styles.formGroup}>
                   <label htmlFor="name">Full Name *</label>
                   <input
@@ -183,6 +196,7 @@ export default function ContactPage() {
                   />
                 </div>
 
+                {/* Email input */}
                 <div className={styles.formGroup}>
                   <label htmlFor="email">Email Address *</label>
                   <input
@@ -196,6 +210,7 @@ export default function ContactPage() {
                   />
                 </div>
 
+                {/* Phone input (optional) */}
                 <div className={styles.formGroup}>
                   <label htmlFor="phone">Phone Number</label>
                   <input
@@ -208,6 +223,7 @@ export default function ContactPage() {
                   />
                 </div>
 
+                {/* Subject dropdown */}
                 <div className={styles.formGroup}>
                   <label htmlFor="subject">Subject *</label>
                   <select
@@ -226,6 +242,7 @@ export default function ContactPage() {
                   </select>
                 </div>
 
+                {/* Interested destinations checkboxes */}
                 <div className={styles.formGroup}>
                   <label>Interested Destinations</label>
                   <div className={styles.checkboxGrid}>
@@ -244,6 +261,7 @@ export default function ContactPage() {
                   </div>
                 </div>
 
+                {/* Message textarea */}
                 <div className={styles.formGroup}>
                   <label htmlFor="message">Message *</label>
                   <textarea
@@ -257,6 +275,7 @@ export default function ContactPage() {
                   />
                 </div>
 
+                {/* Newsletter checkbox */}
                 <div className={styles.formGroup}>
                   <label className={styles.checkboxLabel}>
                     <input
@@ -269,6 +288,7 @@ export default function ContactPage() {
                   </label>
                 </div>
 
+                {/* Submit button */}
                 <button
                   type="submit"
                   className={`btn ${styles.submitButton}`}
@@ -282,7 +302,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Map Section (Decorative) */}
+      {/* Map Section */}
       <section className={styles.mapSection}>
         <div className="container">
           <h2 className="text-center">Visit Our Office</h2>
@@ -299,7 +319,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-      <Footer />
     </div>
   );
 }

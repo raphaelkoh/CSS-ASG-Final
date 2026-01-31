@@ -1,3 +1,9 @@
+/**
+ * Navbar Component
+ * Main navigation bar with dropdown menu for all wonders
+ * Includes click-outside detection to close dropdown
+ */
+
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
@@ -5,9 +11,11 @@ import Link from 'next/link';
 import styles from './Navbar.module.css';
 
 export default function Navbar() {
+  // Track if dropdown is open or closed
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
+  // List of all wonders for the dropdown menu
   const wonders = [
     { name: 'Great Wall of China', path: '/great-wall' },
     { name: 'Machu Picchu', path: '/machu-picchu' },
@@ -18,7 +26,7 @@ export default function Navbar() {
     { name: 'Christ the Redeemer', path: '/christ-the-redeemer' }
   ];
 
-  // Close dropdown if you click outside
+  // Close dropdown when clicking outside - improves UX
   useEffect(() => {
     function handleClickOutside(event) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -38,7 +46,7 @@ export default function Navbar() {
       <div className={styles.links}>
         <Link href="/" className={styles.link}>Home</Link>
 
-        {/* Dropdown */}
+        {/* Dropdown menu for all seven wonders */}
         <div className={styles.dropdown} ref={dropdownRef}>
           <button 
             className={styles.dropdownButton} 
@@ -47,6 +55,7 @@ export default function Navbar() {
             Wonders {dropdownOpen ? "▴" : "▾"}
           </button>
 
+          {/* Show dropdown items when open */}
           {dropdownOpen && (
             <div className={styles.dropdownMenu}>
               {wonders.map((wonder) => (

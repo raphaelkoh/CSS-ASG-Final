@@ -1,3 +1,9 @@
+/**
+ * Great Wall of China Page
+ * Features timeline visualization showing the wall's construction history
+ * Includes stats section and FAQ accordion
+ */
+
 "use client";
 
 import React, { useState } from 'react';
@@ -5,6 +11,7 @@ import styles from './page.module.css';
 import Navbar from '../nav/Navbar';
 import Footer from '../footer/footer.jsx'
 
+// Timeline data - key events in Great Wall history
 const timeline = [
   { year: "7th Century BCE", event: "Rival feudal states build the first disconnected walls of rammed earth to defend against one another." },
   { year: "221 BCE", event: "Emperor Qin Shi Huang unifies China and connects these separate walls into a single northern defense against nomadic tribes." },
@@ -18,6 +25,7 @@ export default function GreatWall() {
   return (
     <div className={styles.container}>
       <Navbar />
+      
       {/* Hero Section */}
       <section className={styles.hero}>
         <div className={styles.heroOverlay} />
@@ -28,7 +36,7 @@ export default function GreatWall() {
         </div>
       </section>
 
-      {/* Quick Stats Section */}
+      {/* Quick Stats Section - key facts at a glance */}
       <section className={styles.statsSection}>
         <div className={styles.statsGrid}>
           {[
@@ -47,14 +55,16 @@ export default function GreatWall() {
         </div>
       </section>
 
-      {/* Timeline Section */}
+      {/* Timeline Section - visual history of construction */}
       <section className={styles.timelineSection}>
         <div className={styles.timelineContainer}>
           <h2 className={styles.timelineTitle}>The History Behind It All</h2>
           
           <div className={styles.timelineWrapper}>
+            {/* Vertical line connecting timeline items */}
             <div className={styles.timelineLine} />
   
+            {/* Map through timeline events */}
             {timeline.map((item, i) => (
               <div 
                 key={i}
@@ -78,9 +88,15 @@ export default function GreatWall() {
   );
 }
 
+/**
+ * FAQ Accordion Component
+ * Expandable Q&A section - only one question open at a time
+ */
 const FAQAccordion = () => {
+  // Track which FAQ is currently open
   const [openIndex, setOpenIndex] = useState(null);
 
+  // FAQ data
   const faqs = [
     { 
       question: "How long is the Great Wall of China?", 
@@ -104,6 +120,7 @@ const FAQAccordion = () => {
     },
   ];
 
+  // Toggle accordion - close if already open, open if closed
   const toggleAccordion = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
@@ -114,6 +131,7 @@ const FAQAccordion = () => {
       <div className={styles.accordionContainer}>
         {faqs.map((faq, index) => (
           <div key={index} className={styles.accordionItem}>
+            {/* Clickable header */}
             <div 
               className={styles.accordionHeader} 
               onClick={() => toggleAccordion(index)}
@@ -121,6 +139,7 @@ const FAQAccordion = () => {
               <h3>{faq.question}</h3>
               <span className={styles.icon}>{openIndex === index ? '−' : '+'}</span>
             </div>
+            {/* Answer shown only when this item is open */}
             {openIndex === index && <div className={styles.accordionBody}>{faq.answer}</div>}
           </div>
         ))}

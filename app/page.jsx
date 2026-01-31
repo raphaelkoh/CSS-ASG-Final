@@ -1,5 +1,8 @@
-// home page
-// app/page.jsx
+/**
+ * Homepage - Main landing page for Seven Wonders website
+ * Shows hero section with video, intro text, and cards for all 7 wonders
+ */
+
 "use client";
 
 import Navbar from './nav/Navbar';
@@ -7,6 +10,7 @@ import styles from './page.module.css';
 import Footer from './footer/footer.jsx';
 
 export default function Home() {
+  // Data for all seven wonders - used to generate the cards below
   const wonders = [
     {
       name: 'Great Wall of China',
@@ -60,7 +64,7 @@ export default function Home() {
       name: 'Taj Mahal',
       location: 'India',
       year: '1653 AD',
-      description: 'An ivory-white marble mausoleum, a monument to eternal love and architectural perfection.',
+      description: 'An ivory-white marble mausolem, a monument to eternal love and architectural perfection.',
       link: '/taj-mahal',
       image: '/tajmahal1.jpg',
     }
@@ -70,10 +74,9 @@ export default function Home() {
     <>
       <Navbar />
 
-      {/* Hero Section */}
+      {/* Hero Section - full screen with video background */}
       <section className={styles.hero}>
-        {/* Optional video background */}
-        {/* Uncomment if you want video */}
+        {/* Background video for visual impact */}
         <video
           className={styles.heroVideo}
           src="/earth.mp4"
@@ -83,11 +86,10 @@ export default function Home() {
           playsInline
         />
         
-
-        {/* Dark overlay */}
+        {/* Dark overlay to make text readable */}
         <div className={styles.heroOverlay} />
 
-        {/* Hero content */}
+        {/* Main hero content */}
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>
             <span className={styles.titleLine1}>Come discover the</span>
@@ -100,6 +102,7 @@ export default function Home() {
             the monuments that shaped our world.
           </p>
           
+          {/* CTA buttons */}
           <div className={styles.heroButtons}>
             <a href="#wonders" className={`btn ${styles.btnPrimary}`}>Explore Wonders</a>
             <a href="/tours" className={`btn ${styles.btnSecondary}`}>Book a Tour</a>
@@ -108,7 +111,7 @@ export default function Home() {
         <div className={styles.heroOverlay}></div>
       </section>
 
-      {/* Introduction Section */}
+      {/* Introduction Section - context about the wonders */}
       <section className={styles.introSection}>
         <div className="container">
           <div className={styles.introContent}>
@@ -131,6 +134,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Main wonders showcase section */}
       <section id="wonders" className={styles.wondersSection}>
         <div className="container">
           <h2 className="text-center">The Seven Wonders</h2>
@@ -139,11 +143,15 @@ export default function Home() {
             Click on each wonder to explore its history, architecture, and cultural significance
           </p>
 
+          {/* Grid of wonder cards */}
           <div className={styles.wondersGrid}>
+            {/* Map through wonders array to create a card for each one */}
             {wonders.map((wonder, index) => (
               <article key={index} className={styles.wonderCard}>
                 <a href={wonder.link} className={styles.cardLink}>
-                  <div className={styles.cardImage}><img src={wonder.image} alt={wonder.name} className={styles.cardImage} /></div>
+                  <div className={styles.cardImage}>
+                    <img src={wonder.image} alt={wonder.name} className={styles.cardImage} />
+                  </div>
                   <div className={styles.cardContent}>
                     <h3 className={styles.cardTitle}>{wonder.name}</h3>
                     <div className={styles.cardMeta}>
@@ -162,7 +170,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Call to Action */}
+      {/* Call to Action section */}
       <section className={styles.ctaSection}>
         <div className="container">
           <div className={styles.ctaContent}>

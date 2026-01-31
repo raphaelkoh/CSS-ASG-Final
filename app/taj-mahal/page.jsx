@@ -1,3 +1,9 @@
+/**
+ * Taj Mahal Page
+ * Features interactive symmetry explorer where users can drag a line
+ * to see the perfect bilateral symmetry of the building
+ */
+
 "use client";
 
 import React, { useState } from 'react';
@@ -6,15 +12,17 @@ import Navbar from '../nav/Navbar';
 import Footer from '../footer/footer.jsx'
 
 export default function TajMahal() {
-  const [symmetryPosition, setSymmetryPosition] = useState(50); // Percentage position of symmetry line
-  const [isDragging, setIsDragging] = useState(false);
-  const [activeSymmetryPair, setActiveSymmetryPair] = useState(null);
+  // State for the symmetry explorer feature
+  const [symmetryPosition, setSymmetryPosition] = useState(50); // Position of the symmetry line (percentage)
+  const [isDragging, setIsDragging] = useState(false); // Track if user is dragging
+  const [activeSymmetryPair, setActiveSymmetryPair] = useState(null); // Track which hotspot is clicked
 
-  // Handle symmetry line drag
+  // Handle mouse down to start dragging
   const handleMouseDown = () => {
     setIsDragging(true);
   };
 
+  // Handle mouse movement while dragging
   const handleMouseMove = (e) => {
     if (!isDragging) return;
     
@@ -23,79 +31,42 @@ export default function TajMahal() {
     const x = e.clientX - rect.left;
     const percentage = (x / rect.width) * 100;
     
+    // Keep percentage within bounds
     if (percentage >= 0 && percentage <= 100) {
       setSymmetryPosition(percentage);
     }
   };
 
+  // Stop dragging when mouse released
   const handleMouseUp = () => {
     setIsDragging(false);
   };
 
-  // Symmetry pairs data - adjusted positions for the specific uploaded image
+  // Symmetry pairs data - clickable points showing architectural features
   const symmetryPairs = [
     {
       id: 'minarets',
       name: 'Four Minarets',
       description: 'Each minaret is 40m tall and tilts slightly outward to protect the tomb in case of earthquake.',
-      position: { left: '20%', top: '45%' } // Left minaret position
+      position: { left: '20%', top: '45%' }
     },
     {
       id: 'domes',
       name: 'Central & Side Domes',
       description: 'The main dome is 35m high, surrounded by 4 smaller domes called chattris.',
-      position: { left: '50%', top: '25%' } // Main central dome
+      position: { left: '50%', top: '25%' }
     },
     {
       id: 'gardens',
       name: 'Reflection Pool & Gardens',
       description: 'The iconic reflection pool creates a mirror image, with perfectly symmetrical gardens on both sides.',
-      position: { left: '50%', top: '85%' } // Reflection pool in foreground
+      position: { left: '50%', top: '85%' }
     },
     {
       id: 'archways',
       name: 'Arched Entrances',
       description: 'Identical archways on all four sides maintain perfect symmetry from every angle.',
-      position: { left: '50%', top: '55%' } // Central archway
-    }
-  ];
-
-  // Material hotspots data
-  const materials = [
-    {
-      id: 'marble',
-      name: 'White Marble',
-      description: 'Sourced from Makrana, Rajasthan - the same marble used in ancient temples.',
-      stones: ['Base material imported from 300km away', 'Changes color with light - pink at dawn, golden at sunset'],
-      position: { left: '50%', top: '40%' }
-    },
-    {
-      id: 'lapislazuli',
-      name: 'Lapis Lazuli (Blue)',
-      description: 'Semi-precious stone from Afghanistan, used for intricate blue inlay work.',
-      stones: ['Imported from Afghanistan', 'Used in floral patterns', 'Most expensive stone used'],
-      position: { left: '45%', top: '50%' }
-    },
-    {
-      id: 'jade',
-      name: 'Jade & Jasper (Green)',
-      description: 'Green stones from China and Punjab, creating emerald floral designs.',
-      stones: ['Jade from China', 'Green jasper from Punjab', 'Used for leaves and stems'],
-      position: { left: '55%', top: '50%' }
-    },
-    {
-      id: 'carnelian',
-      name: 'Carnelian & Coral (Red)',
-      description: 'Red and orange stones creating warm tones in the inlay work.',
-      stones: ['Carnelian from Arabia', 'Red coral from the Indian Ocean', 'Used for flower petals'],
-      position: { left: '50%', top: '60%' }
-    },
-    {
-      id: 'onyx',
-      name: 'Onyx & Agate (Black)',
-      description: 'Black stones for contrast and calligraphy details.',
-      stones: ['Black onyx for outlines', 'Agate for shadow effects', 'Used in Arabic inscriptions'],
-      position: { left: '40%', top: '45%' }
+      position: { left: '50%', top: '55%' }
     }
   ];
 
@@ -128,13 +99,13 @@ export default function TajMahal() {
         </div>
       </section>
 
-      {/* Symmetry Explorer Section */}
+      {/* Symmetry Explorer Section - Interactive feature */}
       <section className={styles.symmetrySection}>
         <div className={styles.symmetryContainer}>
           <h2 className={styles.symmetryTitle}>Perfect Symmetry</h2>
           <p className={styles.symmetrySubtitle}>Drag the line to explore the Taj Mahal's perfect bilateral symmetry</p>
 
-          {/* Symmetry Viewer */}
+          {/* Symmetry Viewer - main interactive area */}
           <div 
             className={styles.symmetryViewer}
             onMouseMove={handleMouseMove}
@@ -142,12 +113,12 @@ export default function TajMahal() {
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseUp}
           >
-            {/* Full image */}
+            {/* Original image */}
             <div className={styles.symmetryImage}>
               <img src="/tajmahal-front.jpg" alt="Taj Mahal Front View" />
             </div>
 
-            {/* Mirrored half (clipped) */}
+            {/* Mirrored half (clipped based on slider position) */}
             <div 
               className={styles.symmetryMirror}
               style={{ clipPath: `inset(0 ${100 - symmetryPosition}% 0 0)` }}
@@ -159,7 +130,7 @@ export default function TajMahal() {
               />
             </div>
 
-            {/* Symmetry Line */}
+            {/* Draggable symmetry line */}
             <div 
               className={styles.symmetryLine}
               style={{ left: `${symmetryPosition}%` }}
@@ -170,7 +141,7 @@ export default function TajMahal() {
               </div>
             </div>
 
-            {/* Symmetry hotspots - adjusted for this specific image */}
+            {/* Clickable hotspots showing symmetrical features */}
             {symmetryPairs.map((pair) => (
               <div
                 key={pair.id}
@@ -184,7 +155,7 @@ export default function TajMahal() {
             ))}
           </div>
 
-          {/* Symmetry Info Panel */}
+          {/* Info panel shown when hotspot is clicked */}
           {activeSymmetryPair && (
             <div className={styles.symmetryInfo}>
               <button 
@@ -211,6 +182,10 @@ export default function TajMahal() {
   );
 }
 
+/**
+ * FAQ Accordion Component
+ * Reusable accordion for frequently asked questions
+ */
 const FAQAccordion = () => {
   const [openIndex, setOpenIndex] = useState(null);
 
